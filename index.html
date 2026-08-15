@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sankofa — Padaria Artesanal</title>
+<meta name="description" content="Sankofa Padaria Artesanal. Nada que vale a pena se apressa. Pão e panificação artesanal feitos com tempo, respeito e tradição.">
+<link rel="icon" href="assets/img/logo-sankofa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#topo" class="brand">
+      <img src="assets/img/logo-sankofa.png" alt="Sankofa Padaria Artesanal" class="brand-logo">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#marca">A Marca</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#contato" class="btn btn-outline nav-cta">Fazer Encomenda</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="topo">
+    <video class="hero-video hero-video-desktop" autoplay muted loop playsinline poster="assets/img/logo-sankofa.png">
+      <source src="assets/video/hero-horizontal.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video hero-video-mobile" autoplay muted loop playsinline poster="assets/img/logo-sankofa.png">
+      <source src="assets/video/hero-vertical.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="assets/img/logo-sankofa.png" alt="Sankofa Padaria Artesanal" class="hero-logo">
+      <p class="hero-tagline">Nada que vale a pena se apressa.</p>
+      <a href="#cardapio" class="btn btn-primary">Ver Cardápio</a>
+    </div>
+    <a href="#marca" class="scroll-cue" aria-label="Rolar para baixo"><span></span></a>
+  </section>
+
+  <!-- A MARCA -->
+  <section class="section marca" id="marca">
+    <div class="container marca-grid">
+      <div class="marca-text">
+        <p class="eyebrow">A Marca</p>
+        <h2>Voltar para buscar o que é essencial.</h2>
+        <p><strong>Sankofa</strong> é um princípio filosófico africano que significa "voltar e buscar". Ele nos ensina que, para seguir em frente com sabedoria, é preciso olhar para trás e resgatar aquilo que é valioso — preservando nossas raízes e aprendizados.</p>
+        <p>Na panificação artesanal, esse princípio se manifesta no respeito ao tempo, aos processos e às receitas que atravessam gerações. Cada pão nasce de um ciclo que não pode ser apressado: origem, preparo, fermentação, forno e partilha.</p>
+      </div>
+      <div class="marca-visual">
+        <img src="assets/img/marca-ilustracao.png" alt="Mãos amassando pão artesanal" class="marca-ilustracao">
+        <div class="marca-emblem marca-emblem-badge">
+          <img src="assets/img/logo-sankofa.png" alt="Símbolo Sankofa">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section class="section cardapio" id="cardapio">
+    <div class="container">
+      <p class="eyebrow eyebrow-center">Cardápio</p>
+      <h2 class="section-title">Feito devagar, todos os dias</h2>
+      <p class="section-lead">* Valores em atualização — em breve os preços definitivos.</p>
+
+      <!--
+        BANNER ROTATIVO
+        Para trocar por uma imagem real: substitua o "background" (linha style=)
+        de cada .banner-slide por uma imagem sua, ex:
+        style="background-image:url('assets/img/banners/banner-1.jpg'); background-size:cover; background-position:center;"
+        Coloque os arquivos em assets/img/banners/. Pode adicionar quantos slides quiser,
+        copiando o bloco .banner-slide e adicionando um botão em #bannerDots (o script já
+        gera os pontinhos automaticamente com base na quantidade de slides).
+      -->
+      <div class="cardapio-banner" id="cardapioBanner">
+        <div class="banner-track" id="bannerTrack">
+          <div class="banner-slide" style="background: linear-gradient(135deg, var(--brown-mid), var(--olive));">
+            <div class="banner-slide-text">
+              <span class="banner-tag">Novidade</span>
+              <h3>Espaço para o seu banner</h3>
+              <p>Troque esta imagem quando quiser divulgar um lançamento, promoção ou sabor da semana.</p>
+            </div>
+          </div>
+          <div class="banner-slide" style="background: linear-gradient(135deg, var(--tan), var(--brown-mid));">
+            <div class="banner-slide-text">
+              <span class="banner-tag">Em breve</span>
+              <h3>Segundo banner</h3>
+              <p>Cada slide pode ter uma imagem, texto e destaque diferente.</p>
+            </div>
+          </div>
+          <div class="banner-slide" style="background: linear-gradient(135deg, var(--olive), var(--brown-dark));">
+            <div class="banner-slide-text">
+              <span class="banner-tag">Novidade</span>
+              <h3>Terceiro banner</h3>
+              <p>Basta enviar as imagens que já plugamos aqui.</p>
+            </div>
+          </div>
+        </div>
+        <button class="banner-arrow banner-prev" id="bannerPrev" aria-label="Banner anterior">‹</button>
+        <button class="banner-arrow banner-next" id="bannerNext" aria-label="Próximo banner">›</button>
+        <div class="banner-dots" id="bannerDots"></div>
+      </div>
+
+      <div class="cardapio-tabs" id="cardapioTabs">
+        <a href="#cat-paes" class="tab-btn" data-tab="paes">Pães Artesanais</a>
+        <a href="#cat-focaccias" class="tab-btn" data-tab="focaccias">Focaccias</a>
+      </div>
+
+      <!--
+        FOTOS DOS PRODUTOS
+        Cada card usa um círculo com ícone de placeholder (ainda sem foto real).
+        Para colocar a foto: troque a <div class="produto-photo-placeholder">...</div>
+        por <img src="assets/img/produtos/nome-do-arquivo.jpg" alt="Nome do produto">
+        dentro de .produto-photo. Coloque os arquivos em assets/img/produtos/.
+      -->
+      <div class="cardapio-grade">
+        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-tl">
+        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-tr">
+        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-bl">
+        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-br">
+
+        <div class="cardapio-panel" id="cat-paes" data-panel="paes">
+          <div class="categoria-header">
+            <h3 class="categoria-title">Pães Artesanais</h3>
+            <div class="categoria-divider"></div>
+          </div>
+          <div class="produtos-grid">
+            <article class="produto-card">
+              <h4>Pão Artesano Simples</h4>
+              <span class="produto-peso">Aproximadamente 400g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Massa enriquecida com ovo e leite, que resulta num miolo extremamente macio e levemente adocicado. Casca fina, interior fofo: o tipo de pão que rende fatia atrás de fatia sem perceber.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="pao-artesano-simples" data-name="Pão Artesano Simples" data-price="0.00" aria-label="Adicionar Pão Artesano Simples ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Pão Artesano Calabresa</h4>
+              <span class="produto-peso">Aproximadamente 450g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>A mesma massa enriquecida e macia, recheada com calabresa suave espalhada em cada fatia. O contraste entre o miolo aveludado e o sabor defumado da calabresa é o que faz esse pão desaparecer rápido.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="pao-artesano-calabresa" data-name="Pão Artesano Calabresa" data-price="0.00" aria-label="Adicionar Pão Artesano Calabresa ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Pão Artesano Chocolate</h4>
+              <span class="produto-peso">Aproximadamente 450g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Massa enriquecida com ovo e leite, com gotas de chocolate distribuídas por toda a extensão. Miolo macio, sabor equilibrado: doce o suficiente pra virar sobremesa, leve o suficiente pra virar café da manhã.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="pao-artesano-chocolate" data-name="Pão Artesano Chocolate" data-price="0.00" aria-label="Adicionar Pão Artesano Chocolate ao carrinho">+</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="cardapio-panel" id="cat-focaccias" data-panel="focaccias">
+          <div class="categoria-header">
+            <h3 class="categoria-title">Focaccias</h3>
+            <div class="categoria-divider"></div>
+          </div>
+          <div class="produtos-grid">
+            <article class="produto-card">
+              <h4>Focaccia Pizza - Mussarela com Tomate Cereja</h4>
+              <span class="produto-peso">Aproximadamente 600g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Massa de fermentação longa, com alvéolos generosos e uma base leve por dentro e crocante por fora. Coberta com mussarela derretida e tomates cereja assados, trazendo frescor e acidez a cada mordida.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="focaccia-mussarela-tomate" data-name="Focaccia Pizza - Mussarela com Tomate Cereja" data-price="0.00" aria-label="Adicionar Focaccia Pizza Mussarela com Tomate Cereja ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Focaccia Pizza - Pepperoni com Mussarela</h4>
+              <span class="produto-peso">Aproximadamente 600g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Base de fermentação longa, macia e aerada, coberta com mussarela e pepperoni que assam junto até a borda dourar. Clássico reinventado com o cuidado da nossa massa.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="focaccia-pepperoni-mussarela" data-name="Focaccia Pizza - Pepperoni com Mussarela" data-price="0.00" aria-label="Adicionar Focaccia Pizza Pepperoni com Mussarela ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Focaccia - Gorgonzola e Mel</h4>
+              <span class="produto-peso">Aproximadamente 500g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Gorgonzola incorporado à massa de fermentação longa, que perfuma e aprofunda o sabor desde a primeira mordida. Por cima, mais gorgonzola encontra o doce do mel puro: um contraste que pede vinho, ou só um café bem forte.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="focaccia-gorgonzola-mel" data-name="Focaccia - Gorgonzola e Mel" data-price="0.00" aria-label="Adicionar Focaccia Gorgonzola e Mel ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Focaccia - Alho e Provolone</h4>
+              <span class="produto-peso">Aproximadamente 500g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>Alho e provolone na massa de fermentação longa, criando uma base intensa e aromática. Finalizada com mais alho frito e parmesão por cima: simples, direta e viciante.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="focaccia-alho-provolone" data-name="Focaccia - Alho e Provolone" data-price="0.00" aria-label="Adicionar Focaccia Alho e Provolone ao carrinho">+</button>
+              </div>
+            </article>
+            <article class="produto-card">
+              <h4>Focaccia Cacau com Chocolate ao Leite</h4>
+              <span class="produto-peso">Aproximadamente 500g</span>
+              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><div class="produto-photo-placeholder"><svg viewBox="0 0 64 64"><path d="M8 40c0-8 8-14 24-14s24 6 24 14-10 12-24 12S8 48 8 40z"/></svg></div></div>
+              <p>A mesma fermentação longa das focaccias salgadas, aqui virando base para cacau na massa e pedaços de chocolate ao leite derretido. Doce, densa e surpreendente: pão e sobremesa em uma coisa só.</p>
+              <div class="produto-footer">
+                <span class="produto-preco">R$ 00,00</span>
+                <button class="produto-add" data-id="focaccia-cacau-chocolate" data-name="Focaccia Cacau com Chocolate ao Leite" data-price="0.00" aria-label="Adicionar Focaccia Cacau com Chocolate ao Leite ao carrinho">+</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section contato" id="contato">
+    <div class="container contato-grid">
+      <div>
+        <p class="eyebrow">Contato</p>
+        <h2>Vamos fazer seu pedido</h2>
+        <p>Encomendas com pelo menos 24h de antecedência. Fale com a gente pelo WhatsApp ou Instagram.</p>
+        <div class="contato-links">
+          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn btn-primary btn-icon"><img src="assets/img/icon-whatsapp.png" alt="" class="btn-icon-img">WhatsApp</a>
+          <a href="https://instagram.com/sankofa" target="_blank" rel="noopener" class="btn btn-outline btn-icon"><img src="assets/img/icon-instagram.png" alt="" class="btn-icon-img">Instagram</a>
+        </div>
+        <p class="contato-nota">* Substitua pelos dados reais de contato e região de entrega.</p>
+      </div>
+      <div class="contato-emblem">
+        <img src="assets/img/logo-sankofa.png" alt="Sankofa Padaria Artesanal">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="assets/img/logo-sankofa.png" alt="Sankofa Padaria Artesanal" class="footer-logo">
+    <p class="footer-tag">Nada que vale a pena se apressa.</p>
+    <div class="footer-social">
+      <a href="https://instagram.com/sankofa" target="_blank" rel="noopener" class="social-link"><img src="assets/img/icon-instagram.png" alt="" class="social-icon">Instagram</a>
+      <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="social-link"><img src="assets/img/icon-whatsapp.png" alt="" class="social-icon">WhatsApp</a>
+    </div>
+    <p class="footer-copy">© 2026 Sankofa Padaria Artesanal.</p>
+  </div>
+</footer>
+
+<!-- CARRINHO -->
+<button id="cartButton" class="cart-fab" aria-label="Ver carrinho de pedidos">
+  <img src="assets/img/icon-whatsapp.png" alt="" class="cart-fab-icon">
+  <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-header">
+    <h3>Seu Pedido</h3>
+    <button id="cartClose" class="cart-close" aria-label="Fechar carrinho">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <p class="cart-empty" id="cartEmpty">Seu carrinho está vazio. Adicione produtos no cardápio.</p>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <a href="#" id="cartWhatsapp" target="_blank" rel="noopener" class="btn btn-primary btn-icon cart-order-btn">
+      <img src="assets/img/icon-whatsapp.png" alt="" class="btn-icon-img">Fazer Pedido pelo WhatsApp
+    </a>
+    <p class="contato-nota">* Número de WhatsApp de exemplo — substitua pelo real.</p>
+  </div>
+</aside>
+
+<script src="js/script.js"></script>
+</body>
+</html>
