@@ -92,7 +92,7 @@ if (bannerTrack) {
 }
 
 // Carrinho de pedidos
-const WHATSAPP_NUMBER = '5500000000000'; // TODO: substituir pelo número real da padaria
+const WHATSAPP_NUMBER = '5517991729955';
 
 const cartFab = document.getElementById('cartButton');
 const cartDrawer = document.getElementById('cartDrawer');
