@@ -219,4 +219,11 @@ cartFab.addEventListener('click', openCart);
 cartClose.addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
 
+cartWhatsappLink.addEventListener('click', () => {
+  cart = [];
+  saveCart();
+  renderCart();
+  closeCart();
+});
+
 renderCart();
