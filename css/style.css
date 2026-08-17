@@ -780,7 +780,7 @@ p { margin: 0 0 1em; }
 .cart-fab-icon {
   width: 26px;
   height: 26px;
-  filter: brightness(0) invert(1);
+  color: var(--paper);
 }
 
 .cart-count {
