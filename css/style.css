@@ -863,6 +863,16 @@ p { margin: 0 0 1em; }
 }
 .cart-close:hover { background: var(--tan); }
 
+.cart-continue {
+  display: block;
+  padding: 14px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brown-mid);
+  border-bottom: 1px solid var(--cream);
+}
+.cart-continue:hover { color: var(--brown-dark); }
+
 .cart-items {
   flex: 1;
   overflow-y: auto;

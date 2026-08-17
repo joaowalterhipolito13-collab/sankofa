@@ -104,6 +104,7 @@ const cartFooterEl = document.getElementById('cartFooter');
 const cartCountEl = document.getElementById('cartCount');
 const cartTotalEl = document.getElementById('cartTotal');
 const cartWhatsappLink = document.getElementById('cartWhatsapp');
+const cartContinue = document.getElementById('cartContinue');
 
 const formatPrice = (value) => 'R$ ' + value.toFixed(2).replace('.', ',');
 
@@ -218,6 +219,7 @@ function closeCart() {
 cartFab.addEventListener('click', openCart);
 cartClose.addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
+cartContinue.addEventListener('click', closeCart);
 
 cartWhatsappLink.addEventListener('click', () => {
   cart = [];
