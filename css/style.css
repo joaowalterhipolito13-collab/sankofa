@@ -307,38 +307,18 @@ p { margin: 0 0 1em; }
   justify-content: center;
 }
 
-.marca-ilustracao {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right center;
-}
-
 .marca-emblem {
   background: var(--cream);
   border-radius: 50%;
-  width: 320px;
-  height: 320px;
+  width: 400px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(66,45,20,0.15);
 }
 .marca-emblem img { width: 100%; }
-
-.marca-emblem-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 190px;
-  height: 190px;
-  padding: 26px;
-  box-shadow: 0 10px 30px rgba(66,45,20,0.2);
-  z-index: 2;
-}
 
 /* ===== Cardápio ===== */
 .cardapio {
@@ -980,7 +960,7 @@ p { margin: 0 0 1em; }
     grid-template-columns: 1fr;
   }
   .marca-visual { order: -1; min-height: 320px; }
-  .marca-emblem-badge { width: 140px; height: 140px; padding: 20px; }
+  .marca-emblem { width: 260px; height: 260px; padding: 32px; }
 }
 
 @media (max-width: 800px) {
