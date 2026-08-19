@@ -504,6 +504,14 @@ p { margin: 0 0 1em; }
   opacity: 0.6;
 }
 
+.categoria-aviso {
+  max-width: 480px;
+  margin: 18px auto 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--brown-mid);
+}
+
 .produtos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
