@@ -537,7 +537,7 @@ p { margin: 0 0 1em; }
   margin-bottom: 0;
 }
 
-.produto-card p:not(.produto-promo) {
+.produto-card p:not(.produto-promo):not(.produto-promo-nota) {
   font-size: 0.85rem;
   color: var(--brown-mid);
   margin-bottom: 22px;
@@ -560,6 +560,13 @@ p { margin: 0 0 1em; }
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.01em;
+}
+
+.produto-promo-nota {
+  margin: 8px 0 0;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--brown-mid);
 }
 
 .produto-preco {
