@@ -550,6 +550,13 @@ p { margin: 0 0 1em; }
   gap: 12px;
 }
 
+.produto-promo {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--olive);
+}
+
 .produto-preco {
   display: inline-block;
   border: 1.5px solid var(--brown-mid);
