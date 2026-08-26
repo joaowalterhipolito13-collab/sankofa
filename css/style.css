@@ -551,9 +551,16 @@ p { margin: 0 0 1em; }
   gap: 12px;
 }
 
+.produto-promo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0 0;
+}
+
 .produto-promo {
   display: inline-block;
-  margin: 12px 0 0;
   padding: 6px 16px;
   background: var(--olive);
   color: var(--paper);
