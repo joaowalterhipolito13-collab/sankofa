@@ -325,6 +325,28 @@ p { margin: 0 0 1em; }
   background: var(--cream);
 }
 
+.cardapio-info {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  padding: 22px 28px;
+  background: var(--paper);
+  border: 1px solid var(--tan);
+  border-radius: 16px;
+  text-align: center;
+}
+.cardapio-info p {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+  color: var(--brown-dark);
+}
+.cardapio-info p:last-child { margin-bottom: 0; }
+.cardapio-info strong { color: var(--olive); }
+.cardapio-info-nota {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--brown-mid);
+}
+
 .cardapio-tabs {
   position: sticky;
   top: 100px;
