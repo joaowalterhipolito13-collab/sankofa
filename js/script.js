@@ -203,7 +203,7 @@ function closeInfoModal() {
   infoOverlay.classList.remove('open');
 }
 
-document.querySelectorAll('.tangzong-badge').forEach(btn => {
+document.querySelectorAll('.tangzong-word').forEach(btn => {
   btn.addEventListener('click', () => openInfoModal(tangzongModal));
 });
 tangzongClose.addEventListener('click', closeInfoModal);

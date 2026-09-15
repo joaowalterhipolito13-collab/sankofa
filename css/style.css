@@ -534,27 +534,20 @@ p { margin: 0 0 1em; }
   margin: 32px auto;
 }
 
-.tangzong-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.tangzong-word {
+  display: inline;
   border: none;
-  border-radius: 100px;
-  padding: 5px 12px;
-  background: rgba(66, 45, 20, 0.85);
-  color: var(--paper);
-  font-family: var(--font-body);
-  font-size: 0.7rem;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--olive);
   font-weight: 700;
-  letter-spacing: 0.02em;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
-.tangzong-badge:hover { background: var(--olive); }
+.tangzong-word:hover { color: var(--brown-dark); }
 
 .info-modal {
   position: fixed;
