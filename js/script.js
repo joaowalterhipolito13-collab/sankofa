@@ -46,51 +46,6 @@ if ('IntersectionObserver' in window && cardapioSection && cardapioTabsEl) {
   tabsVisibility.observe(cardapioSection);
 }
 
-// Banner rotativo (cardápio)
-const bannerTrack = document.getElementById('bannerTrack');
-if (bannerTrack) {
-  const slides = Array.from(bannerTrack.children);
-  const dotsWrap = document.getElementById('bannerDots');
-  const prevBtn = document.getElementById('bannerPrev');
-  const nextBtn = document.getElementById('bannerNext');
-  const bannerEl = document.getElementById('cardapioBanner');
-  let current = 0;
-  let autoplayId = null;
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'banner-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Ir para o banner ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-  const dots = Array.from(dotsWrap.children);
-
-  function goTo(index) {
-    current = (index + slides.length) % slides.length;
-    bannerTrack.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
-
-  function startAutoplay() {
-    stopAutoplay();
-    autoplayId = setInterval(next, 5000);
-  }
-  function stopAutoplay() {
-    if (autoplayId) clearInterval(autoplayId);
-  }
-
-  nextBtn.addEventListener('click', () => { next(); startAutoplay(); });
-  prevBtn.addEventListener('click', () => { prev(); startAutoplay(); });
-  bannerEl.addEventListener('mouseenter', stopAutoplay);
-  bannerEl.addEventListener('mouseleave', startAutoplay);
-
-  if (slides.length > 1) startAutoplay();
-}
-
 // Carrinho de pedidos
 const WHATSAPP_NUMBER = '5517991729955';
 
