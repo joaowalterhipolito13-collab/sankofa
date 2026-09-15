@@ -534,6 +534,62 @@ p { margin: 0 0 1em; }
   margin: 32px auto;
 }
 
+.tangzong-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  border-radius: 100px;
+  padding: 5px 12px;
+  background: rgba(66, 45, 20, 0.85);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.tangzong-badge:hover { background: var(--olive); }
+
+.info-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: calc(100% - 48px);
+  max-width: 420px;
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 32px 28px;
+  z-index: 210;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.info-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.info-modal h3 { margin-bottom: 12px; }
+.info-modal p {
+  margin: 0;
+  color: var(--brown-mid);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.info-modal .cart-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 .produto-photo-bg-mask {
   position: absolute;
   top: 50%;

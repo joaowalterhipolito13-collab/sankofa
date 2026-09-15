@@ -184,3 +184,27 @@ cartWhatsappLink.addEventListener('click', () => {
 });
 
 renderCart();
+
+// Modal informativo (Tangzong)
+const infoOverlay = document.getElementById('infoOverlay');
+const tangzongModal = document.getElementById('tangzongModal');
+const tangzongClose = document.getElementById('tangzongClose');
+
+function openInfoModal(modal) {
+  modal.classList.add('open');
+  infoOverlay.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+function closeInfoModal() {
+  document.querySelectorAll('.info-modal.open').forEach(m => {
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden', 'true');
+  });
+  infoOverlay.classList.remove('open');
+}
+
+document.querySelectorAll('.tangzong-badge').forEach(btn => {
+  btn.addEventListener('click', () => openInfoModal(tangzongModal));
+});
+tangzongClose.addEventListener('click', closeInfoModal);
+infoOverlay.addEventListener('click', closeInfoModal);
