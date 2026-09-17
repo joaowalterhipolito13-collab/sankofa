@@ -572,15 +572,19 @@ p { margin: 0 0 1em; }
 }
 .info-modal h3 { margin-bottom: 12px; }
 .info-modal p {
-  margin: 0;
+  margin: 0 0 12px;
   color: var(--brown-mid);
   font-size: 0.92rem;
   line-height: 1.6;
 }
+.info-modal p:last-child { margin-bottom: 0; }
 .info-modal .cart-close {
   position: absolute;
   top: 16px;
   right: 16px;
+}
+.welcome-eyebrow {
+  margin-bottom: 6px;
 }
 
 .produto-photo-bg-mask {

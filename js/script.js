@@ -208,3 +208,16 @@ document.querySelectorAll('.tangzong-word').forEach(btn => {
 });
 tangzongClose.addEventListener('click', closeInfoModal);
 infoOverlay.addEventListener('click', closeInfoModal);
+
+// Pop-up automático: aviso das fornadas (uma vez por sessão)
+const welcomeModal = document.getElementById('welcomeModal');
+const welcomeClose = document.getElementById('welcomeClose');
+
+welcomeClose.addEventListener('click', closeInfoModal);
+
+if (!sessionStorage.getItem('sankofa-welcome-seen')) {
+  setTimeout(() => {
+    openInfoModal(welcomeModal);
+    sessionStorage.setItem('sankofa-welcome-seen', '1');
+  }, 800);
+}
