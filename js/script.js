@@ -207,13 +207,19 @@ document.querySelectorAll('.tangzong-word').forEach(btn => {
   btn.addEventListener('click', () => openInfoModal(tangzongModal));
 });
 tangzongClose.addEventListener('click', closeInfoModal);
-infoOverlay.addEventListener('click', closeInfoModal);
 
 // Pop-up automático: aviso das fornadas (uma vez por sessão)
 const welcomeModal = document.getElementById('welcomeModal');
 const welcomeClose = document.getElementById('welcomeClose');
 
 welcomeClose.addEventListener('click', closeInfoModal);
+
+// Clicar fora só fecha o Tangzong; o aviso de fornadas exige fechar pelo "×"
+// pra não sumir sozinho com um toque acidental na tela.
+infoOverlay.addEventListener('click', () => {
+  if (welcomeModal.classList.contains('open')) return;
+  closeInfoModal();
+});
 
 if (!sessionStorage.getItem('sankofa-welcome-seen')) {
   setTimeout(() => {
