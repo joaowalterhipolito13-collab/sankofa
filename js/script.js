@@ -20,6 +20,24 @@ mainNav.querySelectorAll('a').forEach(link => {
   });
 });
 
+// Vídeo de fundo da marca: só carrega e toca quando a seção está perto da tela
+const marcaVideo = document.getElementById('marcaVideo');
+if (marcaVideo) {
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          marcaVideo.play().catch(() => {});
+        } else {
+          marcaVideo.pause();
+        }
+      });
+    }, { rootMargin: '200px 0px' }).observe(marcaVideo.parentElement);
+  } else {
+    marcaVideo.play().catch(() => {});
+  }
+}
+
 // Cardápio: destaca a categoria visível enquanto rola
 const tabButtons = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.cardapio-panel');

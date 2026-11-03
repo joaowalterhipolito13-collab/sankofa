@@ -283,19 +283,44 @@ p { margin: 0 0 1em; }
 }
 
 /* ===== A Marca ===== */
+.marca {
+  position: relative;
+  overflow: hidden;
+  background: var(--brown-dark);
+}
+
+.marca-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marca-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(66, 45, 20, 0.72);
+}
+
 .marca-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 72px;
   align-items: center;
 }
 
+.marca-text .eyebrow { color: var(--tan); }
+
 .marca-text h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--paper);
 }
 
 .marca-text p {
-  color: var(--brown-dark);
+  color: rgba(251, 246, 238, 0.92);
   font-size: 1.02rem;
 }
 
