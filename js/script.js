@@ -38,19 +38,108 @@ if (marcaVideo) {
   }
 }
 
-// Cardápio: destaca a categoria visível enquanto rola
-const tabButtons = document.querySelectorAll('.tab-btn');
-const panels = document.querySelectorAll('.cardapio-panel');
-if ('IntersectionObserver' in window && panels.length) {
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const panel = entry.target.dataset.panel;
-      tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === panel));
+// Cardápio: carrossel de produtos (arrastar, setas, abas, inclinação e fundo que muda)
+(() => {
+  const track = document.getElementById('carrosselTrack');
+  if (!track) return;
+  const section = document.getElementById('cardapio');
+  const cards = Array.from(track.querySelectorAll('.produto-card'));
+  const tabs = Array.from(document.querySelectorAll('#cardapioTabs .tab-btn'));
+  const prevBtn = document.getElementById('carrosselPrev');
+  const nextBtn = document.getElementById('carrosselNext');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  cards.forEach(c => { c.style.top = c.dataset.y + 'px'; });
+
+  const centerOf = (card) => card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+  const goTo = (card) => track.scrollTo({ left: centerOf(card), behavior: reduceMotion ? 'auto' : 'smooth' });
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => goTo(cards.find(c => c.dataset.cat === btn.dataset.cat)));
+  });
+
+  let activeIndex = 0;
+  prevBtn.addEventListener('click', () => goTo(cards[Math.max(0, activeIndex - 1)]));
+  nextBtn.addEventListener('click', () => goTo(cards[Math.min(cards.length - 1, activeIndex + 1)]));
+
+  // arrastar com o mouse (só começa depois de mover um pouco, para não atrapalhar os botões do cartão)
+  let pressed = false, dragging = false, dragged = false, startX = 0, startScroll = 0;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    pressed = true; dragged = false;
+    startX = e.clientX; startScroll = track.scrollLeft;
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!pressed) return;
+    const dx = e.clientX - startX;
+    if (!dragging && Math.abs(dx) > 6) {
+      dragging = true; dragged = true;
+      track.classList.add('dragging');
+      track.setPointerCapture(e.pointerId);
+    }
+    if (dragging) track.scrollLeft = startScroll - dx;
+  });
+  const endDrag = () => { pressed = false; dragging = false; track.classList.remove('dragging'); };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('click', (e) => {
+    if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; }
+  }, true);
+
+  // animação: cartão do centro se endireita e cresce; o resto balança conforme a velocidade
+  let lastScroll = track.scrollLeft;
+  let tilt = 0;
+  let running = false;
+
+  function update() {
+    const vel = track.scrollLeft - lastScroll;
+    lastScroll = track.scrollLeft;
+    const target = reduceMotion ? 0 : Math.max(-14, Math.min(14, vel * 0.7));
+    tilt += (target - tilt) * 0.14;
+
+    const box = track.getBoundingClientRect();
+    const center = box.left + box.width / 2;
+    let best = 0, bestFocus = -1;
+
+    cards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      const dist = Math.abs(r.left + r.width / 2 - center);
+      const focus = Math.max(0, 1 - dist / (r.width * 1.1));
+      const rot = Number(card.dataset.rot) * (1 - 0.85 * focus) + tilt * (0.5 + 0.5 * (1 - focus));
+      card.style.rotate = rot.toFixed(2) + 'deg';
+      card.style.scale = (1 + 0.1 * focus).toFixed(3);
+      card.style.zIndex = Math.round(focus * 10);
+      if (focus > bestFocus) { bestFocus = focus; best = i; }
     });
-  }, { rootMargin: '-170px 0px -60% 0px' });
-  panels.forEach(p => spy.observe(p));
-}
+
+    if (best !== activeIndex || !section.style.getPropertyValue('--bg')) {
+      activeIndex = best;
+      const c = cards[best];
+      section.style.setProperty('--bg', c.dataset.bg);
+      tabs.forEach(b => b.classList.toggle('active', b.dataset.cat === c.dataset.cat));
+      prevBtn.disabled = best === 0;
+      nextBtn.disabled = best === cards.length - 1;
+    }
+  }
+
+  function loop() {
+    if (!running) return;
+    update();
+    requestAnimationFrame(loop);
+  }
+
+  update();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      const visible = entries[0].isIntersecting;
+      if (visible && !running) { running = true; requestAnimationFrame(loop); }
+      if (!visible) running = false;
+    }).observe(track);
+  } else {
+    running = true;
+    requestAnimationFrame(loop);
+  }
+})();
 
 // Mobile: mostra as abas como rodapé fixo só enquanto a seção Cardápio está na tela
 const cardapioSection = document.getElementById('cardapio');

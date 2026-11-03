@@ -79,124 +79,112 @@
       </div>
 
       <div class="cardapio-tabs" id="cardapioTabs">
-        <a href="#cat-paes" class="tab-btn" data-tab="paes">Pães Artesanais</a>
-        <a href="#cat-focaccias" class="tab-btn" data-tab="focaccias">Focaccias</a>
+        <button type="button" class="tab-btn active" data-cat="paes">Pães Artesanais</button>
+        <button type="button" class="tab-btn" data-cat="focaccias">Focaccias</button>
       </div>
 
-      <!--
-        FOTOS DOS PRODUTOS
-        Cada card usa um círculo com ícone de placeholder (ainda sem foto real).
-        Para colocar a foto: troque a <div class="produto-photo-placeholder">...</div>
-        por <img src="assets/img/produtos/nome-do-arquivo.jpg" alt="Nome do produto">
-        dentro de .produto-photo. Coloque os arquivos em assets/img/produtos/.
-      -->
-      <div class="cardapio-grade">
-        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-tl">
-        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-tr">
-        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-bl">
-        <img src="assets/img/wheat-sprig.png" alt="" class="grade-ornamento orn-br">
+      <p class="categoria-aviso">Devido a produção ser artesanal, o formato pode variar, mas o peso do produto e a qualidade se mantêm!</p>
+    </div>
 
-        <div class="cardapio-panel" id="cat-paes" data-panel="paes">
-          <div class="categoria-header">
-            <h3 class="categoria-title">Pães Artesanais</h3>
-            <div class="categoria-divider"></div>
-            <p class="categoria-aviso">Devido a produção ser artesanal, o formato pode variar, mas o peso do produto e a qualidade se mantêm!</p>
+    <div class="carrossel">
+      <button class="carrossel-seta carrossel-prev" id="carrosselPrev" type="button" aria-label="Produto anterior">‹</button>
+      <div class="carrossel-track" id="carrosselTrack" tabindex="0" aria-label="Produtos do cardápio">
+        <article class="produto-card" data-cat="paes" data-rot="-4" data-y="10" data-bg="#EBDCC7">
+          <img class="produto-img" src="assets/img/produtos/pao-artesano-simples.jpg" alt="Pão Artesano Simples" loading="lazy">
+          <h4>Pão Artesano Simples</h4>
+          <span class="produto-peso">350/400g</span>
+          <p class="produto-desc">Massa enriquecida com ovo e <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button>, que resulta num miolo extremamente macio e muito leve. Casca fina, interior fofo: o tipo de pão que rende fatia atrás de fatia sem perceber.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 14,90</span>
+              <button class="produto-add" data-id="pao-artesano-simples" data-name="Pão Artesano Simples" data-price="14.90" aria-label="Adicionar Pão Artesano Simples ao carrinho">+</button>
+            </div>
           </div>
-          <div class="produtos-grid">
-            <article class="produto-card">
-              <h4>Pão Artesano Simples</h4>
-              <span class="produto-peso">350/400g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/pao-artesano-simples.jpg" alt="Pão Artesano Simples" loading="lazy"></div>
-              <p>Massa enriquecida com ovo e <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button>, que resulta num miolo extremamente macio e muito leve. Casca fina, interior fofo: o tipo de pão que rende fatia atrás de fatia sem perceber.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 14,90</span>
-                <button class="produto-add" data-id="pao-artesano-simples" data-name="Pão Artesano Simples" data-price="14.90" aria-label="Adicionar Pão Artesano Simples ao carrinho">+</button>
-              </div>
-            </article>
-            <article class="produto-card">
-              <h4>Pão Artesano Calabresa</h4>
-              <span class="produto-peso">350/400g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/pao-artesano-calabresa.jpg" alt="Pão Artesano Calabresa" loading="lazy"></div>
-              <p>Massa enriquecida com ovo e <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button>, incorporada com calabresa moída, ficando com suavidade no sabor. O contraste entre o miolo aveludado e o sabor defumado da calabresa é o que faz esse pão desaparecer rápido.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 19,90</span>
-                <button class="produto-add" data-id="pao-artesano-calabresa" data-name="Pão Artesano Calabresa" data-price="19.90" aria-label="Adicionar Pão Artesano Calabresa ao carrinho">+</button>
-              </div>
-            </article>
-            <article class="produto-card">
-              <h4>Pão Artesano de Cacau e Raspas de Laranja</h4>
-              <span class="produto-peso">350/400g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/pao-artesano-cacau.jpg" alt="Pão Artesano de Cacau e Raspas de Laranja" loading="lazy"></div>
-              <p>Massa enriquecida com ovo, <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button> e cacau em pó, com raspas de laranja e gotas de chocolate ao leite distribuídas por toda a massa. Miolo macio, aroma cítrico e sabor equilibrado: doce o suficiente pra virar sobremesa, leve o suficiente pra virar café da manhã.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 19,90</span>
-                <button class="produto-add" data-id="pao-artesano-cacau" data-name="Pão Artesano de Cacau e Raspas de Laranja" data-price="19.90" aria-label="Adicionar Pão Artesano de Cacau e Raspas de Laranja ao carrinho">+</button>
-              </div>
-            </article>
+        </article>
+        <article class="produto-card" data-cat="paes" data-rot="3" data-y="-14" data-bg="#E9CFC0">
+          <img class="produto-img" src="assets/img/produtos/pao-artesano-calabresa.jpg" alt="Pão Artesano Calabresa" loading="lazy">
+          <h4>Pão Artesano Calabresa</h4>
+          <span class="produto-peso">350/400g</span>
+          <p class="produto-desc">Massa enriquecida com ovo e <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button>, incorporada com calabresa moída, ficando com suavidade no sabor. O contraste entre o miolo aveludado e o sabor defumado da calabresa é o que faz esse pão desaparecer rápido.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 19,90</span>
+              <button class="produto-add" data-id="pao-artesano-calabresa" data-name="Pão Artesano Calabresa" data-price="19.90" aria-label="Adicionar Pão Artesano Calabresa ao carrinho">+</button>
+            </div>
           </div>
-        </div>
-
-        <div class="cardapio-panel" id="cat-focaccias" data-panel="focaccias">
-          <div class="categoria-header">
-            <h3 class="categoria-title">Focaccias</h3>
-            <div class="categoria-divider"></div>
-            <p class="categoria-aviso">Devido a produção ser artesanal, o formato pode variar, mas o peso do produto e a qualidade se mantêm!</p>
+        </article>
+        <article class="produto-card" data-cat="paes" data-rot="-2" data-y="16" data-bg="#D9BB99">
+          <img class="produto-img" src="assets/img/produtos/pao-artesano-cacau.jpg" alt="Pão Artesano de Cacau e Raspas de Laranja" loading="lazy">
+          <h4>Pão Artesano de Cacau e Raspas de Laranja</h4>
+          <span class="produto-peso">350/400g</span>
+          <p class="produto-desc">Massa enriquecida com ovo, <button class="tangzong-word" type="button" aria-haspopup="dialog">tangzong</button> e cacau em pó, com raspas de laranja e gotas de chocolate ao leite distribuídas por toda a massa. Miolo macio, aroma cítrico e sabor equilibrado: doce o suficiente pra virar sobremesa, leve o suficiente pra virar café da manhã.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 19,90</span>
+              <button class="produto-add" data-id="pao-artesano-cacau" data-name="Pão Artesano de Cacau e Raspas de Laranja" data-price="19.90" aria-label="Adicionar Pão Artesano de Cacau e Raspas de Laranja ao carrinho">+</button>
+            </div>
           </div>
-          <div class="produtos-grid">
-            <article class="produto-card">
-              <h4>Focaccia Pizza - Mussarela com Tomate Cereja</h4>
-              <span class="produto-peso">Aproximadamente 250g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/focaccia-mussarela-tomate.jpg" alt="Focaccia Pizza - Mussarela com Tomate Cereja" loading="lazy"></div>
-              <p>Massa de fermentação longa, com alvéolos generosos e uma base leve por dentro e crocante por fora. Coberta com mussarela derretida e tomates cereja assados, trazendo frescor e acidez a cada mordida.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 21,90</span>
-                <button class="produto-add" data-id="focaccia-mussarela-tomate" data-name="Focaccia Pizza - Mussarela com Tomate Cereja" data-price="21.90" aria-label="Adicionar Focaccia Pizza Mussarela com Tomate Cereja ao carrinho">+</button>
-              </div>
-            </article>
-            <article class="produto-card">
-              <h4>Focaccia Pizza - Pepperoni com Mussarela</h4>
-              <span class="produto-peso">Aproximadamente 250g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/focaccia-pepperoni-mussarela.jpg" alt="Focaccia Pizza - Pepperoni com Mussarela" loading="lazy"></div>
-              <p>Base de fermentação longa, macia e aerada, coberta com mussarela e pepperoni que assam junto até a borda dourar. Clássico reinventado com o cuidado da nossa massa.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 21,90</span>
-                <button class="produto-add" data-id="focaccia-pepperoni-mussarela" data-name="Focaccia Pizza - Pepperoni com Mussarela" data-price="21.90" aria-label="Adicionar Focaccia Pizza Pepperoni com Mussarela ao carrinho">+</button>
-              </div>
-            </article>
-            <article class="produto-card">
-              <h4>Focaccia - Parmesão com Alho</h4>
-              <span class="produto-peso">Aproximadamente 250g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/focaccia-parmesao-alho.jpg" alt="Focaccia - Parmesão com Alho" loading="lazy"></div>
-              <p>Alho na massa de fermentação longa, criando uma base intensa e aromática. Finalizada com alho frito e parmesão generoso por cima: simples, direta e viciante.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 16,90</span>
-                <button class="produto-add" data-id="focaccia-parmesao-alho" data-name="Focaccia - Parmesão com Alho" data-price="16.90" aria-label="Adicionar Focaccia Parmesão com Alho ao carrinho">+</button>
-              </div>
-              <div class="produto-promo-row">
-                <span class="produto-promo">2 por R$ 29,90</span>
-                <button class="produto-add" data-id="focaccia-parmesao-alho-combo" data-name="Focaccia - Parmesão com Alho (2 unidades - combo)" data-price="29.90" aria-label="Adicionar combo 2 Focaccia Parmesão com Alho ao carrinho">+</button>
-              </div>
-              <p class="produto-promo-nota">*válido apenas para focaccias do mesmo sabor</p>
-            </article>
-            <article class="produto-card">
-              <h4>Focaccia Cacau com Chocolate ao Leite</h4>
-              <span class="produto-peso">Aproximadamente 250g</span>
-              <div class="produto-photo"><div class="produto-photo-bg-mask"><div class="produto-photo-bg"></div></div><img src="assets/img/produtos/focaccia-cacau-chocolate.jpg" alt="Focaccia Cacau com Chocolate ao Leite" loading="lazy"></div>
-              <p>A mesma fermentação longa das focaccias salgadas, aqui virando base para cacau na massa e pedaços de chocolate ao leite derretido. Doce, densa e surpreendente: pão e sobremesa em uma coisa só.</p>
-              <div class="produto-footer">
-                <span class="produto-preco">R$ 16,90</span>
-                <button class="produto-add" data-id="focaccia-cacau-chocolate" data-name="Focaccia Cacau com Chocolate ao Leite" data-price="16.90" aria-label="Adicionar Focaccia Cacau com Chocolate ao Leite ao carrinho">+</button>
-              </div>
-              <div class="produto-promo-row">
-                <span class="produto-promo">2 por R$ 29,90</span>
-                <button class="produto-add" data-id="focaccia-cacau-chocolate-combo" data-name="Focaccia Cacau com Chocolate ao Leite (2 unidades - combo)" data-price="29.90" aria-label="Adicionar combo 2 Focaccia Cacau com Chocolate ao Leite ao carrinho">+</button>
-              </div>
-              <p class="produto-promo-nota">*válido apenas para focaccias do mesmo sabor</p>
-            </article>
+        </article>
+        <article class="produto-card" data-cat="focaccias" data-rot="5" data-y="-10" data-bg="#EBD3B5">
+          <img class="produto-img" src="assets/img/produtos/focaccia-mussarela-tomate.jpg" alt="Focaccia Pizza - Mussarela com Tomate Cereja" loading="lazy">
+          <h4>Focaccia Pizza - Mussarela com Tomate Cereja</h4>
+          <span class="produto-peso">Aproximadamente 250g</span>
+          <p class="produto-desc">Massa de fermentação longa, com alvéolos generosos e uma base leve por dentro e crocante por fora. Coberta com mussarela derretida e tomates cereja assados, trazendo frescor e acidez a cada mordida.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 21,90</span>
+              <button class="produto-add" data-id="focaccia-mussarela-tomate" data-name="Focaccia Pizza - Mussarela com Tomate Cereja" data-price="21.90" aria-label="Adicionar Focaccia Pizza - Mussarela com Tomate Cereja ao carrinho">+</button>
+            </div>
           </div>
-        </div>
-
+        </article>
+        <article class="produto-card" data-cat="focaccias" data-rot="-3" data-y="12" data-bg="#E6C4A4">
+          <img class="produto-img" src="assets/img/produtos/focaccia-pepperoni-mussarela.jpg" alt="Focaccia Pizza - Pepperoni com Mussarela" loading="lazy">
+          <h4>Focaccia Pizza - Pepperoni com Mussarela</h4>
+          <span class="produto-peso">Aproximadamente 250g</span>
+          <p class="produto-desc">Base de fermentação longa, macia e aerada, coberta com mussarela e pepperoni que assam junto até a borda dourar. Clássico reinventado com o cuidado da nossa massa.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 21,90</span>
+              <button class="produto-add" data-id="focaccia-pepperoni-mussarela" data-name="Focaccia Pizza - Pepperoni com Mussarela" data-price="21.90" aria-label="Adicionar Focaccia Pizza - Pepperoni com Mussarela ao carrinho">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="produto-card" data-cat="focaccias" data-rot="4" data-y="-12" data-bg="#CFD2B0">
+          <img class="produto-img" src="assets/img/produtos/focaccia-parmesao-alho.jpg" alt="Focaccia - Parmesão com Alho" loading="lazy">
+          <h4>Focaccia - Parmesão com Alho</h4>
+          <span class="produto-peso">Aproximadamente 250g</span>
+          <p class="produto-desc">Alho na massa de fermentação longa, criando uma base intensa e aromática. Finalizada com alho frito e parmesão generoso por cima: simples, direta e viciante.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 16,90</span>
+              <button class="produto-add" data-id="focaccia-parmesao-alho" data-name="Focaccia - Parmesão com Alho" data-price="16.90" aria-label="Adicionar Focaccia - Parmesão com Alho ao carrinho">+</button>
+            </div>
+            <div class="produto-promo-row">
+              <span class="produto-promo">2 por R$ 29,90</span>
+              <button class="produto-add" data-id="focaccia-parmesao-alho-combo" data-name="Focaccia - Parmesão com Alho (2 unidades - combo)" data-price="29.90" aria-label="Adicionar combo 2 Focaccia - Parmesão com Alho ao carrinho">+</button>
+            </div>
+            <p class="produto-promo-nota">*válido apenas para focaccias do mesmo sabor</p>
+          </div>
+        </article>
+        <article class="produto-card" data-cat="focaccias" data-rot="-5" data-y="8" data-bg="#D8C2AE">
+          <img class="produto-img" src="assets/img/produtos/focaccia-cacau-chocolate.jpg" alt="Focaccia Cacau com Chocolate ao Leite" loading="lazy">
+          <h4>Focaccia Cacau com Chocolate ao Leite</h4>
+          <span class="produto-peso">Aproximadamente 250g</span>
+          <p class="produto-desc">A mesma fermentação longa das focaccias salgadas, aqui virando base para cacau na massa e pedaços de chocolate ao leite derretido. Doce, densa e surpreendente: pão e sobremesa em uma coisa só.</p>
+          <div class="produto-bottom">
+            <div class="produto-footer">
+              <span class="produto-preco">R$ 16,90</span>
+              <button class="produto-add" data-id="focaccia-cacau-chocolate" data-name="Focaccia Cacau com Chocolate ao Leite" data-price="16.90" aria-label="Adicionar Focaccia Cacau com Chocolate ao Leite ao carrinho">+</button>
+            </div>
+            <div class="produto-promo-row">
+              <span class="produto-promo">2 por R$ 29,90</span>
+              <button class="produto-add" data-id="focaccia-cacau-chocolate-combo" data-name="Focaccia Cacau com Chocolate ao Leite (2 unidades - combo)" data-price="29.90" aria-label="Adicionar combo 2 Focaccia Cacau com Chocolate ao Leite ao carrinho">+</button>
+            </div>
+            <p class="produto-promo-nota">*válido apenas para focaccias do mesmo sabor</p>
+          </div>
+        </article>
       </div>
+      <button class="carrossel-seta carrossel-next" id="carrosselNext" type="button" aria-label="Próximo produto">›</button>
     </div>
   </section>
 
