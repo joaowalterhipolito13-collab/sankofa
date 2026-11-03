@@ -58,6 +58,17 @@ if (marcaVideo) {
     btn.addEventListener('click', () => goTo(cards.find(c => c.dataset.cat === btn.dataset.cat)));
   });
 
+  const dotsWrap = document.getElementById('carrosselDots');
+  const dots = cards.map((card) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carrossel-dot';
+    dot.tabIndex = -1;
+    dot.addEventListener('click', () => goTo(card));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
   let activeIndex = 0;
   prevBtn.addEventListener('click', () => goTo(cards[Math.max(0, activeIndex - 1)]));
   nextBtn.addEventListener('click', () => goTo(cards[Math.min(cards.length - 1, activeIndex + 1)]));
@@ -117,6 +128,7 @@ if (marcaVideo) {
       const c = cards[best];
       section.style.setProperty('--bg', c.dataset.bg);
       tabs.forEach(b => b.classList.toggle('active', b.dataset.cat === c.dataset.cat));
+      dots.forEach((d, i) => d.classList.toggle('active', i === best));
       prevBtn.disabled = best === 0;
       nextBtn.disabled = best === cards.length - 1;
     }

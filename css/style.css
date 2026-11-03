@@ -418,9 +418,36 @@ p { margin: 0 0 1em; }
   position: relative;
 }
 
+.carrossel-dica {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+}
+.carrossel-dica span { font-size: 1.3rem; line-height: 0; vertical-align: -2px; color: var(--olive); }
+
+.carrossel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.carrossel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(66, 45, 20, 0.25);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.carrossel-dot.active { background: var(--brown-dark); transform: scale(1.3); }
+
 .carrossel-track {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 36px;
   overflow-x: auto;
   padding: 52px calc(50% - 160px);
@@ -434,8 +461,7 @@ p { margin: 0 0 1em; }
 
 .carrossel-seta {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 190px;
   z-index: 5;
   width: 46px;
   height: 46px;
@@ -973,10 +999,6 @@ p { margin: 0 0 1em; }
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 1000px) {
-  .carrossel-seta { display: none; }
-}
-
 @media (max-width: 900px) {
   .marca-grid,
   .contato-grid {
@@ -1010,6 +1032,9 @@ p { margin: 0 0 1em; }
 
   .carrossel-track { padding-inline: calc(50% - 130px); gap: 24px; }
   .produto-card { flex-basis: 260px; }
+  .carrossel-seta { width: 38px; height: 38px; font-size: 1.3rem; top: 150px; }
+  .carrossel-prev { left: 8px; }
+  .carrossel-next { right: 8px; }
 
   /* Abas do cardápio viram um rodapé fixo no mobile enquanto a seção estiver na tela */
   .cardapio-tabs {
