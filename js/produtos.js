@@ -276,69 +276,134 @@ function montarIndice() {
 
 const paragrafos = (lista) => lista.map((t) => `<p>${t}</p>`).join('');
 const linhaFicha = (f) => `<div class="ficha-linha"><dt>${f.rotulo}</dt><dd>${f.valor}</dd></div>`;
+const valorDe = (p, rotulo) => (p.ficha.find((f) => f.rotulo === rotulo) || {}).valor;
+
+// "Aproximadamente 380 g" -> "≈ 380 g"; "350 a 400 g" -> "350–400 g"
+const pesoCurto = (v) => v.replace('Aproximadamente', '≈').replace(' a ', '–');
+
+let observador = null;
+function revelar() {
+  if (observador) observador.disconnect();
+  const itens = produtoEl.querySelectorAll('.rev');
+  if (!('IntersectionObserver' in window)) { itens.forEach((el) => el.classList.add('visto')); return; }
+  observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('visto'); observador.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  itens.forEach((el) => observador.observe(el));
+}
+
+function inclinarFoto() {
+  const figura = produtoEl.querySelector('.info-foto');
+  const area = produtoEl.querySelector('.info-visual');
+  if (!figura || !area || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  area.addEventListener('pointermove', (e) => {
+    const r = area.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    figura.style.transform = `translate(${(x * 14).toFixed(1)}px, ${(y * 14).toFixed(1)}px)`;
+  });
+  area.addEventListener('pointerleave', () => { figura.style.transform = ''; });
+}
 
 function render(i) {
   const p = PRODUTOS[i];
+  const proximo = PRODUTOS[(i + 1) % total];
   const fotos = [p.foto, ...p.fotos];
   const galeria = fotos.length > 1
     ? `<div class="info-galeria">${fotos.map((f, k) => `<button type="button" class="info-galeria-item${k === 0 ? ' ativa' : ''}" data-src="${f}" aria-label="Foto ${k + 1}"><img src="${f}" alt=""></button>`).join('')}</div>`
     : '';
 
+  const tecnica = valorDe(p, 'Fermentação') ? ['Fermentação', valorDe(p, 'Fermentação')] : ['Técnica', valorDe(p, 'Técnica')];
+  const alergenos = valorDe(p, 'Alérgenos');
+  const ficha = p.ficha.filter((f) => f.rotulo !== 'Alérgenos');
+
   produtoEl.innerHTML = `
     <div class="container info-grid">
       <div class="info-foto-col">
-        <figure class="info-foto"><img id="fotoPrincipal" src="${p.foto}" alt="${p.nome}"></figure>
+        <div class="info-visual">
+          <div class="info-blob" aria-hidden="true"></div>
+          <figure class="info-foto"><img id="fotoPrincipal" src="${p.foto}" alt="${p.nome}"></figure>
+          <div class="info-selo" aria-label="Peso ${valorDe(p, 'Peso')}"><small>Peso</small><strong>${pesoCurto(valorDe(p, 'Peso'))}</strong></div>
+        </div>
         ${galeria}
       </div>
+
       <div class="info-texto">
         <p class="eyebrow">${p.cat}</p>
         <h2>${p.nome}</h2>
 
-        <section class="info-bloco">
+        <div class="info-destaques">
+          <div class="info-destaque"><small>${tecnica[0]}</small><strong>${tecnica[1]}</strong></div>
+          <div class="info-destaque"><small>Na geladeira</small><strong>Cerca de 3 dias</strong></div>
+          <div class="info-destaque"><small>Congelamento</small><strong>Pode congelar</strong></div>
+        </div>
+
+        <section class="info-bloco rev">
           <h3>Sobre</h3>
-          ${paragrafos(p.sobre)}
+          <p class="info-lead">${p.sobre[0]}</p>
+          ${paragrafos(p.sobre.slice(1))}
         </section>
 
-        <section class="info-bloco">
-          <h3>Origem</h3>
+        <section class="info-origem rev">
+          <p class="info-rotulo">Origem</p>
           <p class="info-origem-titulo">${p.origemTitulo}</p>
           ${paragrafos(p.origem)}
         </section>
 
-        <section class="info-bloco">
+        <section class="info-bloco rev">
           <h3>Ficha técnica</h3>
-          <dl class="ficha">${p.ficha.map(linhaFicha).join('')}</dl>
+          <div class="info-ficha-card"><dl class="ficha">${ficha.map(linhaFicha).join('')}</dl></div>
+          <div class="info-alergenos">
+            <span class="marca" aria-hidden="true">!</span>
+            <div><small>Alérgenos</small><span class="txt">${alergenos}</span></div>
+          </div>
         </section>
 
-        <section class="info-bloco">
+        <section class="info-bloco rev">
           <h3>Ingredientes</h3>
-          <p>${p.ingredientes}</p>
+          <p class="info-ingredientes">${p.ingredientes}</p>
           <p class="info-nota">Lista preliminar, em ordem decrescente de quantidade.</p>
         </section>
 
-        <section class="info-bloco">
+        <section class="info-bloco rev">
           <h3>Conservação e dicas</h3>
-          <p>${CONSERVACAO}</p>
+          <div class="info-conserva">
+            <div class="info-conserva-num"><strong>3 dias</strong><small>na geladeira</small></div>
+            <p>${CONSERVACAO}</p>
+          </div>
           <ul class="dicas">${p.dicas.map((d) => `<li>${d}</li>`).join('')}</ul>
         </section>
 
-        <div class="info-cta">
+        <div class="info-cta rev">
           <a class="btn btn-primary" href="index.html#cardapio">Ver no cardápio</a>
+          <button type="button" class="info-proximo" id="infoProximo" aria-label="Ver ${proximo.nome}">
+            <img src="${proximo.foto}" alt="">
+            <span><small>Próximo produto</small><strong>${proximo.curto}</strong></span>
+            <span class="seta" aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </div>`;
 
+  produtoEl.querySelectorAll('.rev').forEach((el, k) => { el.style.setProperty('--d', (k % 2) * 80 + 'ms'); });
+  produtoEl.querySelector('#infoProximo').addEventListener('click', () => ir((i + 1) % total));
   produtoEl.querySelectorAll('.info-galeria-item').forEach((b) => {
     b.addEventListener('click', () => {
       document.getElementById('fotoPrincipal').src = b.dataset.src;
       produtoEl.querySelectorAll('.info-galeria-item').forEach((x) => x.classList.toggle('ativa', x === b));
     });
   });
+  revelar();
+  inclinarFoto();
 }
 
 function ir(i, { rolar = true } = {}) {
   if (i < 0 || i >= total || i === atual) return;
   const primeira = atual === -1;
+  const dir = i > atual ? 1 : -1;
   atual = i;
   const p = PRODUTOS[i];
   if (history.replaceState) history.replaceState(null, '', '#' + p.id);
@@ -348,6 +413,7 @@ function ir(i, { rolar = true } = {}) {
   if (ativo) ativo.scrollIntoView({ inline: 'center', block: 'nearest', behavior: primeira ? 'auto' : 'smooth' });
 
   if (primeira) { render(i); return; }
+  produtoEl.style.setProperty('--dx', dir * 36 + 'px');
   produtoEl.classList.add('trocando');
   setTimeout(() => {
     render(i);
@@ -365,8 +431,17 @@ function indiceDoHash() {
   return i >= 0 ? i : 0;
 }
 
+function ajustarIndice() {
+  main.style.setProperty('--hh', header.offsetHeight + 'px');
+  indice.classList.toggle('fixo', indice.getBoundingClientRect().top <= header.offsetHeight + 2 && window.scrollY > 200);
+}
+window.addEventListener('scroll', ajustarIndice, { passive: true });
+window.addEventListener('resize', ajustarIndice);
+header.addEventListener('transitionend', ajustarIndice);
+
 montarIndice();
 ir(indiceDoHash());
+ajustarIndice();
 window.addEventListener('hashchange', () => ir(indiceDoHash()));
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') ir(atual - 1);
