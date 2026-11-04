@@ -181,6 +181,12 @@
   color: var(--brown-dark);
 }
 .info-bloco p:last-child { margin-bottom: 0; }
+.info-bloco p.info-nota {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--brown-mid);
+}
 .info-origem-titulo {
   font-family: var(--font-display);
   font-style: italic;
