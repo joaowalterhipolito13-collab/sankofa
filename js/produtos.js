@@ -211,7 +211,7 @@ const PRODUTOS = [
       { rotulo: 'Sabor', valor: 'Intenso e aromático' },
       { rotulo: 'Alérgenos', valor: 'Contém trigo e leite. Contém glúten.' },
     ],
-    ingredientes: 'Farinha de trigo, água, fermento natural (levain), queijo parmesão, azeite e alho frito.',
+    ingredientes: 'Farinha de trigo, água, fermento natural (levain), queijo parmesão, azeite, alho frito e sal.',
     dicas: [
       'Aqueça diretamente no forno ou na airfryer por alguns minutos para recuperar a textura e realçar o aroma do parmesão e do alho.',
       'Para congelar, divida em porções e retire apenas a quantidade que deseja consumir.',
