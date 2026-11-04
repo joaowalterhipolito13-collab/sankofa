@@ -530,6 +530,18 @@ p { margin: 0 0 1em; }
   color: var(--brown-mid);
 }
 
+.produto-saiba {
+  display: inline-block;
+  margin: -6px 4px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--olive);
+  text-decoration: underline;
+  text-decoration-color: rgba(91, 94, 59, 0.4);
+  text-underline-offset: 3px;
+}
+.produto-saiba:hover { color: var(--brown-dark); text-decoration-color: currentColor; }
+
 .produto-bottom {
   margin-top: auto;
 }
