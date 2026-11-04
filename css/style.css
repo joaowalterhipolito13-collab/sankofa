@@ -347,10 +347,25 @@ p { margin: 0 0 1em; }
 
 /* ===== Cardápio ===== */
 .cardapio {
+  background: var(--cream);
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.cardapio-cat {
   background: var(--bg, var(--cream));
   transition: background 0.7s ease;
+  padding-top: 56px;
+  padding-bottom: 24px;
   overflow: hidden;
 }
+.cardapio-cat-titulo {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-style: italic;
+}
+.cardapio-cat .carrossel-dica { margin-top: 12px; }
 
 .cardapio-info {
   max-width: 640px;
@@ -372,36 +387,6 @@ p { margin: 0 0 1em; }
   font-size: 0.8rem;
   font-style: italic;
   color: var(--brown-mid);
-}
-
-.cardapio-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 1.2rem;
-}
-
-.tab-btn {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 10px 22px;
-  border-radius: 100px;
-  border: 1.5px solid var(--tan);
-  background: var(--paper);
-  color: var(--brown-mid);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.tab-btn:hover { border-color: var(--brown-mid); }
-.tab-btn.active {
-  background: var(--brown-dark);
-  border-color: var(--brown-dark);
-  color: var(--paper);
 }
 
 .categoria-aviso {
@@ -1048,40 +1033,70 @@ p { margin: 0 0 1em; }
   .carrossel-prev { left: 8px; }
   .carrossel-next { right: 8px; }
 
-  /* Abas do cardápio viram um rodapé fixo no mobile enquanto a seção estiver na tela */
-  .cardapio-tabs {
-    position: fixed;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    width: 100%;
-    border-radius: 0;
-    justify-content: space-evenly;
-    gap: 4px;
-    padding: 14px 10px calc(14px + env(safe-area-inset-bottom));
-    background: rgba(235, 220, 199, 0.97);
-    box-shadow: 0 -6px 20px rgba(66,45,20,0.15);
-    z-index: 150;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-  }
-  .cardapio-tabs.tabs-visible {
-    transform: translateY(0);
-  }
-  .tab-btn {
-    flex: 1;
-    text-align: center;
-    padding: 10px 8px;
-  }
-
-  .cart-fab {
-    bottom: 96px;
-  }
 }
 
 @media (max-width: 520px) {
   .contato-links { flex-direction: column; }
   .contato-links .btn { text-align: center; }
+}
+
+/* ===== Faixa "Sobre os produtos" ===== */
+.sobre-faixa {
+  background: var(--paper);
+  text-align: center;
+}
+.sobre-faixa .section-title { margin: 6px 0 10px; }
+.sobre-faixa-sub {
+  max-width: 520px;
+  margin: 0 auto 34px;
+  color: var(--brown-mid);
+}
+.sobre-faixa-lista {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 18px 14px;
+  margin-bottom: 38px;
+}
+.sobre-item {
+  width: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: var(--brown-dark);
+  text-decoration: none;
+}
+.sobre-thumb {
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 18px rgba(66, 45, 20, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sobre-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sobre-nome {
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.sobre-item:hover .sobre-thumb {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 14px 26px rgba(66, 45, 20, 0.3);
+}
+.sobre-sep {
+  flex: 0 0 1px;
+  height: 84px;
+  background: var(--brown-mid);
+  opacity: 0.35;
+  margin: 0 8px;
+}
+@media (max-width: 768px) {
+  .sobre-sep { display: none; }
+  .sobre-item { width: 92px; }
 }

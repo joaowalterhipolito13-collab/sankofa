@@ -38,15 +38,13 @@ if (marcaVideo) {
   }
 }
 
-// Cardápio: carrossel de produtos (arrastar, setas, abas, inclinação e fundo que muda)
-(() => {
-  const track = document.getElementById('carrosselTrack');
-  if (!track) return;
-  const section = document.getElementById('cardapio');
+// Cardápio: um carrossel por categoria (arrastar, setas, inclinação e fundo que muda)
+document.querySelectorAll('.cardapio-cat').forEach((block) => {
+  const track = block.querySelector('.carrossel-track');
   const cards = Array.from(track.querySelectorAll('.produto-card'));
-  const tabs = Array.from(document.querySelectorAll('#cardapioTabs .tab-btn'));
-  const prevBtn = document.getElementById('carrosselPrev');
-  const nextBtn = document.getElementById('carrosselNext');
+  const prevBtn = block.querySelector('.carrossel-prev');
+  const nextBtn = block.querySelector('.carrossel-next');
+  const dotsWrap = block.querySelector('.carrossel-dots');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   cards.forEach(c => { c.style.top = c.dataset.y + 'px'; });
@@ -54,11 +52,6 @@ if (marcaVideo) {
   const centerOf = (card) => card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
   const goTo = (card) => track.scrollTo({ left: centerOf(card), behavior: reduceMotion ? 'auto' : 'smooth' });
 
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => goTo(cards.find(c => c.dataset.cat === btn.dataset.cat)));
-  });
-
-  const dotsWrap = document.getElementById('carrosselDots');
   const dots = cards.map((card) => {
     const dot = document.createElement('button');
     dot.type = 'button';
@@ -123,11 +116,9 @@ if (marcaVideo) {
       if (focus > bestFocus) { bestFocus = focus; best = i; }
     });
 
-    if (best !== activeIndex || !section.style.getPropertyValue('--bg')) {
+    if (best !== activeIndex || !block.style.getPropertyValue('--bg')) {
       activeIndex = best;
-      const c = cards[best];
-      section.style.setProperty('--bg', c.dataset.bg);
-      tabs.forEach(b => b.classList.toggle('active', b.dataset.cat === c.dataset.cat));
+      block.style.setProperty('--bg', cards[best].dataset.bg);
       dots.forEach((d, i) => d.classList.toggle('active', i === best));
       prevBtn.disabled = best === 0;
       nextBtn.disabled = best === cards.length - 1;
@@ -151,19 +142,7 @@ if (marcaVideo) {
     running = true;
     requestAnimationFrame(loop);
   }
-})();
-
-// Mobile: mostra as abas como rodapé fixo só enquanto a seção Cardápio está na tela
-const cardapioSection = document.getElementById('cardapio');
-const cardapioTabsEl = document.getElementById('cardapioTabs');
-if ('IntersectionObserver' in window && cardapioSection && cardapioTabsEl) {
-  const tabsVisibility = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      cardapioTabsEl.classList.toggle('tabs-visible', entry.isIntersecting);
-    });
-  });
-  tabsVisibility.observe(cardapioSection);
-}
+});
 
 // Carrinho de pedidos
 const WHATSAPP_NUMBER = '5517991729955';
